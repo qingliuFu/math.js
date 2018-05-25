@@ -8,6 +8,7 @@ var math = {}
  * @return {array}     [返回组合集合]
  * @example [[1,3],[1,2],[3,2]]
  */
+
 math.combo = function (arr, num) {
   let result = []
   let range = function (r, _arr) {
@@ -23,7 +24,29 @@ math.combo = function (arr, num) {
   range([], arr)
   return result
 }
-
+/**
+ * [combine 组合运算]
+ * @param  {array} arr  [进行组合运算的数组]
+ * @param  {number} size [每几个元素为一组]
+ * @return {number}      [可能组合的个数]
+ */
+	math.combine(arr,size){
+		let arrLen=arr.length;
+		function factorial(n){
+			if(n==1){
+				return n;
+			}else{
+				return n*factorial(n-1);
+			}
+		}
+		if(size>arrLen){
+			return;
+		}else if(size==arrLen){
+			return 1;
+		}else{
+			return factorial(arrLen)/(factorial(size)*factorial(arrLen-size));
+		}
+	}
 /**
  * [排列运算]
  * @param  {array} arr [基本数组]
